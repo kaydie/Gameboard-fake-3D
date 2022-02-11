@@ -1,0 +1,22 @@
+const path = require('path');
+
+module.exports = {
+  entry: './src/app.js',
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Production',
+    }),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+};
