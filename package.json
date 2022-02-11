@@ -1,21 +1,28 @@
 {
-  "name": "getting-started-using-a-configuration",
+  "name": "gameboard",
   "version": "1.0.0",
+  "description": "",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "start": "serve dist"
+    "start": "webpack serve --open --config webpack.config.js",
+    "build": "webpack"
   },
   "keywords": [],
-  "author": "",
-  "license": "MIT",
-  "dependencies": {
-    "lodash": "^4.17.21"
-  },
+  "author": "Kay Maatkamp",
+  "license": "ISC",
   "devDependencies": {
-    "serve": "^12.0.0",
-    "webpack": "^5.38.1",
-    "webpack-cli": "^4.7.2"
+    "express": "^4.17.1",
+    "html-webpack-plugin": "^5.5.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.64.4",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-middleware": "^5.2.2",
+    "webpack-dev-server": "^4.6.0",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "css-loader": "^6.5.1",
+    "element-ready": "^6.2.0",
+    "keyboardjs": "^2.6.4"
   }
 }
