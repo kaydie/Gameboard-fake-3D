@@ -1,12 +1,12 @@
 const path = require('path');
-const HtmlWebpackPlugin = require("html-webpack-plugin")
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: './src/app.js',
-  mode: "development",
+  mode: 'production',
   devServer: {
-    static: "./dist/",
-    hot: true
+    static: './dist/',
+    hot: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
