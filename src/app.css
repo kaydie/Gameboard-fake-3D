@@ -12,16 +12,6 @@
   --board-transform-rotate: -15deg;
   --board-transform-scale: 1;
 
-  --board-hover-transform-skew-x: 45deg;
-  --board-hover-transform-scale-y: 0.1;
-  --board-hover-transform-rotate: -18deg;
-  --board-hover-transform-scale: 1;
-
-  --board-hover-transform-skew-x: 45deg;
-  --board-hover-transform-scale-y: 0.1;
-  --board-hover-transform-rotate: -18deg;
-  --board-hover-transform-scale: 1;
-
   --board-hover-puppet-anchor-transform-skew-x: -24deg;
   --board-hover-puppet-anchor-transform-skew-y: 15deg;
   --board-hover-puppet-anchor-transform-scale-x: 2;
@@ -532,6 +522,20 @@ body {
     transform: rotate(-90deg) skew(3deg);
   }
 }
+@keyframes legswalk {
+  25% {
+    transform: skewY(-5deg)
+  }
+  50% {
+    transform: skewY(0)
+  }
+  75% {
+    transform: skewY(5deg)
+  }
+  100% {
+    transform: skewY(0)
+  }
+}
 
 .shake {
   animation-name: headshake;
@@ -544,7 +548,8 @@ body {
   animation-duration: 1s;
   animation-timing-function: ease-in-out;
 }
-.skirt-walk {
+.skirt-walk, 
+.legs-walk {
   animation-iteration-count: infinite;
   animation-duration: 2s;
   animation-timing-function: ease-in-out;
@@ -580,6 +585,8 @@ body {
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
   border-top: 105px solid rgb(26, 21, 21);
+  animation-name: legswalk;
+
 }
 
 .shoes {
@@ -707,6 +714,7 @@ body {
   border-right: 15px solid transparent;
   border-top: 105px solid rgb(189, 156, 94);
   border-bottom: 0 solid transparent;
+  animation-name: legswalk;
 }
 .maggie_clevage {
   position: absolute;
