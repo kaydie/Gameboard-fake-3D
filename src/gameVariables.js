@@ -67,8 +67,8 @@ board.appendChild(grid);
 Object.assign(game, {
   waitingQueue: [],
   onStageQueue: [],
-  timer: 4000, //ms
-  fps: 8, // this is per timer cycle
+  timer: 2000, //ms
+  fps: 4, // this is per timer cycle
   steps: {
     min: 15,
     max: 15,

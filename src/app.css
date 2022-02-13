@@ -241,7 +241,7 @@ body {
   border-radius: 20% 45% 0 20%;
   transform: rotate(-90deg) skew(10deg);
   left: -47px;
-  top: -115px;
+  top: -105px;
   background: conic-gradient(
         transparent 25%,
         #e72e33 0% 50%,
@@ -505,13 +505,13 @@ body {
 
 @keyframes waistwalk {
   25% {
-    transform: rotate(-2deg);
+    transform: rotate(-1.5deg);
   }
   50% {
     transform: rotate(0);
   }
   75% {
-    transform: rotate(2deg);
+    transform: rotate(1.5deg);
   }
   100% {
     transform: rotate(0);
@@ -520,16 +520,16 @@ body {
 
 @keyframes skirtwalk {
   25% {
-    transform: rotate(-87deg) skew(-10deg);
+    transform: rotate(-87deg) skew(-3deg);
   }
   50% {
-    transform: rotate(-90deg) skew(10deg);
+    transform: rotate(-90deg) skew(3deg);
   }
   75% {
-    transform: rotate(-93deg) skew(-10deg);
+    transform: rotate(-93deg) skew(-3deg);
   }
   100% {
-    transform: rotate(-90deg) skew(10deg);
+    transform: rotate(-90deg) skew(3deg);
   }
 }
 
@@ -539,8 +539,7 @@ body {
   animation-duration: 0.25s;
 }
 .shake-walk,
-.waist-walk,
-.skirt-walk {
+.waist-walk {
   animation-iteration-count: infinite;
   animation-duration: 1s;
   animation-timing-function: ease-in-out;
