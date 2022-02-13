@@ -240,8 +240,8 @@ body {
   transform-origin: center;
   border-radius: 20% 45% 0 20%;
   transform: rotate(-90deg) skew(10deg);
-  left: -47px;
-  top: -105px;
+  left: -50px;
+  top: -112px;
   background: conic-gradient(
         transparent 25%,
         #e72e33 0% 50%,
