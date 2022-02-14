@@ -5,7 +5,6 @@
   "private": true,
   "scripts": {
     "start": "webpack serve --open --config webpack.config.js",
-    "build": "webpack"
   },
   "keywords": [],
   "author": "Kay Maatkamp",
