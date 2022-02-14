@@ -356,43 +356,23 @@ function memberAutoPilot() {
 
           let move = member.anchor.animate(moveSteps, animateOptions)
 
+          move.onfinish = (e) => {
+            const target = e.target.effect.target
+            target.querySelectorAll(".waist, .maggie_waist, .legs, .maggie_legs, .maggie_skirt")
+            .forEach(el => {
+               el.classList.remove("waist-walk")
+               el.classList.remove("skirt-walk")
+               el.classList.remove("legs-walk")
+            })
+            target.classList.remove("back")
+            consideredTile.style.outline = null
+            if (member.credits !== 0) member.credits--
+         }
           move.pause()
 
           member.anchor.style.opacity = 0
           member.anchor.style.zIndex = consideredTile.style.zIndex
 
-          move.onfinish = (e) => {
-            // game.board.grid.element.querySelectorAll(".tile").forEach( tile => tile.classList.remove("footprint") )
-            // move = []
-            const target = e.originalTarget.effect.target
-
-            target.querySelectorAll(".waist, .maggie_waist, .legs, .maggie_legs, .maggie_skirt")
-              .forEach(el => {
-                el.classList.remove("waist-walk")
-                el.classList.remove("skirt-walk")
-              })
-
-              target.classList.remove("back")
-
-            // startTile.classList.remove("footprint")
-            consideredTile.style.outline = null
-            if (member.credits !== 0) member.credits--
-            // else {
-            //   const puppetIndex = game.onStageQueue.findIndex(item => item.bio.born === member.bio.born)
-            //   if(puppetIndex > -1 ){
-            //     let eol = game.onStageQueue.splice(puppetIndex, 1)
-            //     if(eol[0].anchor != undefined)
-            //     game.waitingQueue.push(eol[0])
-            //     game.onStageQueue.forEach(member => {
-            //     //member.parentElement.firstChild.remove()
-            //   })
-            //     //game.board.members = game.onStageQueue.length
-            //   }
-            // }
-            // if(game.onStageQueue.length === 0) {
-            //   return clearInterval(gameStart)
-            // }
-          }
           logs.animate && console.log("move steps", moveSteps)
 
           let audioWalkSound = setTimeout(() => {
