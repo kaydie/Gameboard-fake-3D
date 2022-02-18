@@ -18,6 +18,7 @@ function fetchMemberData(name = 'random') {
 
   let newMemberData = JSON.parse(JSON.stringify(memberList[name]));
   newMemberData.bio.born = btoa(Math.ceil(Math.random() * Date.now()));
+  newMemberData.doSteps = []
 
   return buildMember(newMemberData);
 }
@@ -41,10 +42,11 @@ function buildMember(memberData) {
   member.credits = Math.ceil(
     Math.random() * (game.credits.max - game.credits.min) + game.credits.min
   );
-  member.quotes = memberData.quotes;
-  member.bio = memberData.bio;
-  member.location = memberData.location;
-  member.keyBindings = memberData.keyBindings;
+  member.quotes = memberData.quotes
+  member.bio = memberData.bio
+  member.doSteps = memberData.doSteps
+  member.location = memberData.location
+  member.keyBindings = memberData.keyBindings
 
   return member;
 }
@@ -80,7 +82,7 @@ function placeMemberOnBoard(layer, member, startTile, steps) {
   const hoverSound = function () {
     this.classList.add('autopilotDisabled');
     const clickedMember = game.onStageQueue[this.dataset.queueId];
-    memberManualControlSetup(clickedMember);
+    memberManualControlSetup(clickedMember, game.steps.max);
     this.removeEventListener('mouseenter', hoverSound, true);
     Audio.playAudio(Audio.hover);
     this.addEventListener('mouseleave', leaveSound);
@@ -187,10 +189,11 @@ function getAxisPositionInLayer(layerValue, axisValue, tileValue, gapValue) {
 function memberAutoPilot() {
   if (game.onStageQueue.length !== game.board.members) {
   }
-
+  
   for (const [index, member] of game.onStageQueue.entries()) {
     let move = [];
     let steps = Math.round(Math.random() * game.steps.max);
+    let manualStep = null
 
     const autopilotDisabled =
       member.anchor.classList.contains('autopilotDisabled');
@@ -198,7 +201,14 @@ function memberAutoPilot() {
     if (autopilotDisabled) {
       member.speechBubble.style.visibility = 'visible';
       member.speechBubble.innerHTML = `<p>Not going anywere soon...<p>`;
-      continue;
+
+      if(member.doSteps.length === 0)
+        continue;
+
+      manualStep = member.doSteps.pop()
+
+      console.log(manualStep)
+
     } else {
       if (member == undefined) return clearTimeout(gameStart);
     }

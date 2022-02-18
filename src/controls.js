@@ -1,11 +1,15 @@
 import keyboardJS from 'keyboardjs';
 
-function memberManualControlSetup(member) {
+let theCounter = 0;
+
+function memberManualControlSetup(member, steps) {
   const controlled = member['anchor'].classList.contains('autopilotDisabled');
+
+  keyboardJS.reset();
 
   if (controlled === false) {
     console.log('key bindings cleared');
-    keyboardJS.reset();
+    // keyboardJS.reset();
     return false;
   }
 
@@ -19,6 +23,9 @@ function memberManualControlSetup(member) {
       keyboardJS.bind(key, (e) => {
         e.preventDefault;
         console.log(`${member.bio.name} is going ${key}`);
+        if (steps > member.doSteps.length)
+          member.doSteps.push(`${key}`);
+        console.log(member);
       });
     });
 }
