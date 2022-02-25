@@ -18,7 +18,7 @@ function fetchMemberData(name = 'random') {
 
   let newMemberData = JSON.parse(JSON.stringify(memberList[name]));
   newMemberData.bio.born = btoa(Math.ceil(Math.random() * Date.now()));
-  newMemberData.doSteps = []
+  newMemberData.doSteps = [];
 
   return buildMember(newMemberData);
 }
@@ -42,11 +42,11 @@ function buildMember(memberData) {
   member.credits = Math.ceil(
     Math.random() * (game.credits.max - game.credits.min) + game.credits.min
   );
-  member.quotes = memberData.quotes
-  member.bio = memberData.bio
-  member.doSteps = memberData.doSteps
-  member.location = memberData.location
-  member.keyBindings = memberData.keyBindings
+  member.quotes = memberData.quotes;
+  member.bio = memberData.bio;
+  member.doSteps = memberData.doSteps;
+  member.location = memberData.location;
+  member.keyBindings = memberData.keyBindings;
 
   return member;
 }
@@ -186,14 +186,14 @@ function getAxisPositionInLayer(layerValue, axisValue, tileValue, gapValue) {
   );
 }
 
-function memberAutoPilot() {
+function memberAutoPilot(nextStep = null) {
   if (game.onStageQueue.length !== game.board.members) {
   }
-  
+
   for (const [index, member] of game.onStageQueue.entries()) {
     let move = [];
     let steps = Math.round(Math.random() * game.steps.max);
-    let manualStep = null
+    let manualStep = null;
 
     const autopilotDisabled =
       member.anchor.classList.contains('autopilotDisabled');
@@ -202,13 +202,11 @@ function memberAutoPilot() {
       member.speechBubble.style.visibility = 'visible';
       member.speechBubble.innerHTML = `<p>Not going anywere soon...<p>`;
 
-      if(member.doSteps.length === 0)
-        continue;
+      if (member.doSteps.length === 0) continue;
 
-      manualStep = member.doSteps.pop()
+      manualStep = member.doSteps.pop();
 
-      console.log(manualStep)
-
+      console.log(manualStep);
     } else {
       if (member == undefined) return clearTimeout(gameStart);
     }
@@ -224,17 +222,61 @@ function memberAutoPilot() {
         );
 
       let startTile = member.location.currentTile;
-      let consideredTile = startTile;
-      let counter = 0;
-      let nextStepX, nextStepY;
+      let nextStepX, nextStepY, consideredTile;
+
+      switch (nextStep) {
+        case 'up':
+          nextStepX = member.location.tile.row + 1
+          nextStepY = member.location.tile.col
+          break;
+        case 'down':
+          nextStepX = member.location.tile.row - 1
+          nextStepY = member.location.tile.col
+          break;
+        case 'left':
+          nextStepX = member.location.tile.row
+          nextStepY = member.location.tile.col - 1
+        case 'right':
+          consideredTile
+          nextStepX = member.location.tile.row
+          nextStepY = member.location.tile.col + 1
+          break;
+        case 'up + left':
+          nextStepX = member.location.tile.row + 1
+          nextStepY = member.location.tile.col - 1
+          break;
+        case 'up + right':
+          nextStepX = member.location.tile.row + 1
+          nextStepY = member.location.tile.col + 1
+          break;
+        case 'down + left':
+          nextStepX = member.location.tile.row - 1
+          nextStepY = member.location.tile.col - 1
+          break;
+        case 'down + right':
+          nextStepX = member.location.tile.row - 1
+          nextStepY = member.location.tile.col + 1
+        default:
+          nextStepX = member.location.tile.row
+          nextStepY = member.location.tile.col
+      }
+
+      consideredTile = document.querySelector(
+        `[data-row="${nextStepX}"][data-col="${nextStepY}"]`
+      );
+      
+      console.log('ct', consideredTile);
+
       do {
-        nextStepX =
-          parseInt(member.location.tile.row) +
-          (Math.round(Math.random() * 2) - 1);
-        nextStepY =
-          parseInt(member.location.tile.col) +
-          (Math.round(Math.random() * 2) - 1);
-        counter++;
+        nextStepX = nextStepX === null 
+          ? parseInt(member.location.tile.row) +
+          (Math.round(Math.random() * 2) - 1)
+          : nextStepX;
+        nextStepY = nextStepY === null 
+          ? parseInt(member.location.tile.col) +
+          (Math.round(Math.random() * 2) - 1)
+          : nextStepY;
+
         if (nextStepX > game.board.grid.rows) nextStepX = game.board.grid.rows;
 
         if (nextStepX < 1) nextStepX = 1;
