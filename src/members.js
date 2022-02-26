@@ -224,42 +224,42 @@ function memberAutoPilot(nextStep = null) {
       let startTile = member.location.currentTile;
       let nextStepX, nextStepY, consideredTile;
 
-      switch (nextStep) {
-        case 'up':
-          nextStepX = member.location.tile.row + 1
-          nextStepY = member.location.tile.col
-          break;
-        case 'down':
-          nextStepX = member.location.tile.row - 1
-          nextStepY = member.location.tile.col
-          break;
-        case 'left':
-          nextStepX = member.location.tile.row
-          nextStepY = member.location.tile.col - 1
-        case 'right':
-          consideredTile
-          nextStepX = member.location.tile.row
-          nextStepY = member.location.tile.col + 1
-          break;
-        case 'up + left':
-          nextStepX = member.location.tile.row + 1
-          nextStepY = member.location.tile.col - 1
-          break;
-        case 'up + right':
-          nextStepX = member.location.tile.row + 1
-          nextStepY = member.location.tile.col + 1
-          break;
-        case 'down + left':
-          nextStepX = member.location.tile.row - 1
-          nextStepY = member.location.tile.col - 1
-          break;
-        case 'down + right':
-          nextStepX = member.location.tile.row - 1
-          nextStepY = member.location.tile.col + 1
-        default:
-          nextStepX = member.location.tile.row
-          nextStepY = member.location.tile.col
-      }
+      // switch (nextStep) {
+      //   case 'up':
+      //     nextStepX = member.location.tile.row + 1
+      //     nextStepY = member.location.tile.col
+      //     break;
+      //   case 'down':
+      //     nextStepX = member.location.tile.row - 1
+      //     nextStepY = member.location.tile.col
+      //     break;
+      //   case 'left':
+      //     nextStepX = member.location.tile.row
+      //     nextStepY = member.location.tile.col - 1
+      //   case 'right':
+      //     consideredTile
+      //     nextStepX = member.location.tile.row
+      //     nextStepY = member.location.tile.col + 1
+      //     break;
+      //   case 'up + left':
+      //     nextStepX = member.location.tile.row + 1
+      //     nextStepY = member.location.tile.col - 1
+      //     break;
+      //   case 'up + right':
+      //     nextStepX = member.location.tile.row + 1
+      //     nextStepY = member.location.tile.col + 1
+      //     break;
+      //   case 'down + left':
+      //     nextStepX = member.location.tile.row - 1
+      //     nextStepY = member.location.tile.col - 1
+      //     break;
+      //   case 'down + right':
+      //     nextStepX = member.location.tile.row - 1
+      //     nextStepY = member.location.tile.col + 1
+      //   default:
+      //     nextStepX = member.location.tile.row
+      //     nextStepY = member.location.tile.col
+      // }
 
       consideredTile = document.querySelector(
         `[data-row="${nextStepX}"][data-col="${nextStepY}"]`
@@ -268,11 +268,11 @@ function memberAutoPilot(nextStep = null) {
       console.log('ct', consideredTile);
 
       do {
-        nextStepX = nextStepX === null 
+        nextStepX = nextStepX == null 
           ? parseInt(member.location.tile.row) +
           (Math.round(Math.random() * 2) - 1)
           : nextStepX;
-        nextStepY = nextStepY === null 
+        nextStepY = nextStepY == null 
           ? parseInt(member.location.tile.col) +
           (Math.round(Math.random() * 2) - 1)
           : nextStepY;
