@@ -269,7 +269,6 @@ function memberAutoPilot(nextStep = null) {
         console.log('ct', consideredTile);
       } else {
         do {
-          console.log('planning next move!');
           nextStepX =
             parseInt(member.location.tile.row) +
             (Math.round(Math.random() * 2) - 1);
@@ -277,21 +276,23 @@ function memberAutoPilot(nextStep = null) {
             parseInt(member.location.tile.col) +
             (Math.round(Math.random() * 2) - 1);
 
-          if (nextStepX > game.board.grid.rows)
-            nextStepX = game.board.grid.rows;
-
-          if (nextStepX < 1) nextStepX = 1;
-
-          if (nextStepY > game.board.grid.cols)
-            nextStepY = game.board.grid.cols;
-
-          if (nextStepY < 1) nextStepY = 1;
-
-          consideredTile = document.querySelector(
-            `[data-row="${nextStepX}"][data-col="${nextStepY}"]`
-          );
         } while (consideredTile === startTile);
       }
+
+      if (nextStepX > game.board.grid.rows)
+        nextStepX = game.board.grid.rows;
+
+      if (nextStepX < 1) nextStepX = 1;
+
+      if (nextStepY > game.board.grid.cols)
+        nextStepY = game.board.grid.cols;
+
+      if (nextStepY < 1) nextStepY = 1;
+
+      consideredTile = document.querySelector(
+        `[data-row="${nextStepX}"][data-col="${nextStepY}"]`
+      );
+
       if (consideredTile == null) {
         consideredTile = startTile;
       }
