@@ -269,16 +269,10 @@ function memberAutoPilot(nextStep = null) {
       console.log('ct', consideredTile);
 
       do {
-        nextStepX =
-          nextStepX == null
-            ? parseInt(member.location.tile.row) +
+        nextStepX = parseInt(member.location.tile.row) +
               (Math.round(Math.random() * 2) - 1)
-            : nextStepX;
-        nextStepY =
-          nextStepY == null
-            ? parseInt(member.location.tile.col) +
+        nextStepY = parseInt(member.location.tile.col) +
               (Math.round(Math.random() * 2) - 1)
-            : nextStepY;
 
         if (nextStepX > game.board.grid.rows) nextStepX = game.board.grid.rows;
 
