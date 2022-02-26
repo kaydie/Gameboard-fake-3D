@@ -262,9 +262,9 @@ function memberAutoPilot(nextStep = null) {
       //     nextStepY = member.location.tile.col
       // }
 
-      consideredTile = document.querySelector(
-        `[data-row="${nextStepX}"][data-col="${nextStepY}"]`
-      );
+      // consideredTile = document.querySelector(
+      //   `[data-row="${nextStepX}"][data-col="${nextStepY}"]`
+      // );
 
       console.log('ct', consideredTile);
 
