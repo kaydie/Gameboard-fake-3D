@@ -225,68 +225,73 @@ function memberAutoPilot(nextStep = null) {
       let startTile = member.location.currentTile;
       let nextStepX, nextStepY, consideredTile;
 
-      // switch (nextStep) {
-      //   case 'up':
-      //     nextStepX = member.location.tile.row + 1
-      //     nextStepY = member.location.tile.col
-      //     break;
-      //   case 'down':
-      //     nextStepX = member.location.tile.row - 1
-      //     nextStepY = member.location.tile.col
-      //     break;
-      //   case 'left':
-      //     nextStepX = member.location.tile.row
-      //     nextStepY = member.location.tile.col - 1
-      //   case 'right':
-      //     consideredTile
-      //     nextStepX = member.location.tile.row
-      //     nextStepY = member.location.tile.col + 1
-      //     break;
-      //   case 'up + left':
-      //     nextStepX = member.location.tile.row + 1
-      //     nextStepY = member.location.tile.col - 1
-      //     break;
-      //   case 'up + right':
-      //     nextStepX = member.location.tile.row + 1
-      //     nextStepY = member.location.tile.col + 1
-      //     break;
-      //   case 'down + left':
-      //     nextStepX = member.location.tile.row - 1
-      //     nextStepY = member.location.tile.col - 1
-      //     break;
-      //   case 'down + right':
-      //     nextStepX = member.location.tile.row - 1
-      //     nextStepY = member.location.tile.col + 1
-      //   default:
-      //     nextStepX = member.location.tile.row
-      //     nextStepY = member.location.tile.col
-      // }
-
-      // consideredTile = document.querySelector(
-      //   `[data-row="${nextStepX}"][data-col="${nextStepY}"]`
-      // );
-
-      console.log('ct', consideredTile);
-
-      do {
-        nextStepX = parseInt(member.location.tile.row) +
-              (Math.round(Math.random() * 2) - 1)
-        nextStepY = parseInt(member.location.tile.col) +
-              (Math.round(Math.random() * 2) - 1)
-
-        if (nextStepX > game.board.grid.rows) nextStepX = game.board.grid.rows;
-
-        if (nextStepX < 1) nextStepX = 1;
-
-        if (nextStepY > game.board.grid.cols) nextStepY = game.board.grid.cols;
-
-        if (nextStepY < 1) nextStepY = 1;
-
+      if (nextStep != null) {
+        switch (nextStep) {
+          case 'up':
+            nextStepX = member.location.tile.row - 1;
+            nextStepY = member.location.tile.col;
+            break;
+          case 'down':
+            nextStepX = member.location.tile.row + 1;
+            nextStepY = member.location.tile.col;
+            break;
+          case 'left':
+            nextStepX = member.location.tile.row;
+            nextStepY = member.location.tile.col - 1;
+            break;
+          case 'right':
+            nextStepX = member.location.tile.row;
+            nextStepY = member.location.tile.col + 1;
+            break;
+          case 'up + left':
+            nextStepX = member.location.tile.row - 1;
+            nextStepY = member.location.tile.col - 1;
+            break;
+          case 'up + right':
+            nextStepX = member.location.tile.row - 1;
+            nextStepY = member.location.tile.col + 1;
+            break;
+          case 'down + left':
+            nextStepX = member.location.tile.row + 1;
+            nextStepY = member.location.tile.col - 1;
+            break;
+          case 'down + right':
+            nextStepX = member.location.tile.row + 1;
+            nextStepY = member.location.tile.col + 1;
+            break;
+          default:
+            nextStepX = member.location.tile.row;
+            nextStepY = member.location.tile.col;
+        }
         consideredTile = document.querySelector(
           `[data-row="${nextStepX}"][data-col="${nextStepY}"]`
         );
-      } while (consideredTile === startTile);
+        console.log('ct', consideredTile);
+      } else {
+        do {
+          console.log('planning next move!');
+          nextStepX =
+            parseInt(member.location.tile.row) +
+            (Math.round(Math.random() * 2) - 1);
+          nextStepY =
+            parseInt(member.location.tile.col) +
+            (Math.round(Math.random() * 2) - 1);
 
+          if (nextStepX > game.board.grid.rows)
+            nextStepX = game.board.grid.rows;
+
+          if (nextStepX < 1) nextStepX = 1;
+
+          if (nextStepY > game.board.grid.cols)
+            nextStepY = game.board.grid.cols;
+
+          if (nextStepY < 1) nextStepY = 1;
+
+          consideredTile = document.querySelector(
+            `[data-row="${nextStepX}"][data-col="${nextStepY}"]`
+          );
+        } while (consideredTile === startTile);
+      }
       if (consideredTile == null) {
         consideredTile = startTile;
       }

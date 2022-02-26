@@ -1,4 +1,5 @@
 import keyboardJS from 'keyboardjs';
+import { memberAutoPilot } from './members';
 
 let theCounter = 0;
 
@@ -23,9 +24,8 @@ function memberManualControlSetup(member, steps) {
       keyboardJS.bind(key, (e) => {
         e.preventDefault;
         console.log(`${member.bio.name} is going ${key}`);
-        if (steps > member.doSteps.length)
-          member.doSteps.push(`${key}`);
-        console.log(member);
+        if (steps > member.doSteps.length) member.doSteps.push(`${key}`);
+        memberAutoPilot(key);
       });
     });
 }

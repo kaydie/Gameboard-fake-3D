@@ -70,8 +70,8 @@ Object.assign(game, {
   timer: 2000, //ms
   fps: 4, // this is per timer cycle
   steps: {
-    min: 15,
-    max: 15,
+    min: 3,
+    max: 3,
   },
   credits: {
     min: 10,
