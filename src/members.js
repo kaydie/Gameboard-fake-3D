@@ -194,6 +194,7 @@ function memberAutoPilot(nextStep = null) {
     let move = [];
     let steps = Math.round(Math.random() * game.steps.max);
     let manualStep = null;
+    console.log('hi!');
 
     const autopilotDisabled =
       member.anchor.classList.contains('autopilotDisabled');
@@ -264,18 +265,20 @@ function memberAutoPilot(nextStep = null) {
       consideredTile = document.querySelector(
         `[data-row="${nextStepX}"][data-col="${nextStepY}"]`
       );
-      
+
       console.log('ct', consideredTile);
 
       do {
-        nextStepX = nextStepX == null 
-          ? parseInt(member.location.tile.row) +
-          (Math.round(Math.random() * 2) - 1)
-          : nextStepX;
-        nextStepY = nextStepY == null 
-          ? parseInt(member.location.tile.col) +
-          (Math.round(Math.random() * 2) - 1)
-          : nextStepY;
+        nextStepX =
+          nextStepX == null
+            ? parseInt(member.location.tile.row) +
+              (Math.round(Math.random() * 2) - 1)
+            : nextStepX;
+        nextStepY =
+          nextStepY == null
+            ? parseInt(member.location.tile.col) +
+              (Math.round(Math.random() * 2) - 1)
+            : nextStepY;
 
         if (nextStepX > game.board.grid.rows) nextStepX = game.board.grid.rows;
 
