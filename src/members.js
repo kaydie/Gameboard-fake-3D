@@ -209,6 +209,8 @@ function memberAutoPilot(nextStep = null) {
 
       console.log(manualStep);
     } else {
+      if (nextStep != null) continue;
+
       if (member == undefined) return clearTimeout(gameStart);
     }
 
@@ -275,17 +277,14 @@ function memberAutoPilot(nextStep = null) {
           nextStepY =
             parseInt(member.location.tile.col) +
             (Math.round(Math.random() * 2) - 1);
-
         } while (consideredTile === startTile);
       }
 
-      if (nextStepX > game.board.grid.rows)
-        nextStepX = game.board.grid.rows;
+      if (nextStepX > game.board.grid.rows) nextStepX = game.board.grid.rows;
 
       if (nextStepX < 1) nextStepX = 1;
 
-      if (nextStepY > game.board.grid.cols)
-        nextStepY = game.board.grid.cols;
+      if (nextStepY > game.board.grid.cols) nextStepY = game.board.grid.cols;
 
       if (nextStepY < 1) nextStepY = 1;
 
