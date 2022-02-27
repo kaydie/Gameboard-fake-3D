@@ -22,7 +22,7 @@ function memberManualControlSetup(member, steps) {
   if (member.keyBindings != null)
     member.keyBindings.forEach((key) => {
       keyboardJS.bind(key, (e) => {
-        e.preventDefault;
+        e.preventRepeat();
         console.log(`${member.bio.name} is going ${key}`);
         if (steps > member.doSteps.length) member.doSteps.push(`${key}`);
         memberAutoPilot(key);

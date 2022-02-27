@@ -192,7 +192,8 @@ function memberAutoPilot(nextStep = null) {
 
   for (const [index, member] of game.onStageQueue.entries()) {
     let move = [];
-    let steps = Math.round(Math.random() * game.steps.max);
+    let steps =
+      nextStep == null ? Math.round(Math.random() * game.steps.max) : 1;
     let manualStep = null;
     console.log('hi!');
 

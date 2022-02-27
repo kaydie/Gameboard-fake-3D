@@ -7,8 +7,8 @@ Object.assign(game, {
     element: document.createElement('div'),
     grid: {
       element: createLayer('grid'),
-      cols: 50,
-      rows: 50,
+      cols: 20,
+      rows: 20,
       gap: 0,
     },
     tile: {
@@ -68,7 +68,7 @@ Object.assign(game, {
   waitingQueue: [],
   onStageQueue: [],
   timer: 2000, //ms
-  fps: 30, // this is per timer cycle
+  fps: 5, // this is per timer cycle
   steps: {
     min: 15,
     max: 15,
