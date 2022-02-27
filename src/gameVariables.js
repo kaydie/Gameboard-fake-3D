@@ -68,7 +68,7 @@ Object.assign(game, {
   waitingQueue: [],
   onStageQueue: [],
   timer: 2000, //ms
-  fps: 5, // this is per timer cycle
+  fps: 10, // this is per timer cycle
   steps: {
     min: 15,
     max: 15,

@@ -462,11 +462,6 @@ function memberAutoPilot(nextStep = null) {
 
           (async () => {
             move.play();
-            console.log(
-              'gbmr',
-              move,
-              game.onStageQueue[0].anchor.style.animationPlayState
-            );
             let wait = sleep((game.timer / game.fps) * steps);
             let timer;
             timer = setInterval(() => {
