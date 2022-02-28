@@ -388,14 +388,14 @@ function memberAutoPilot(nextStep = null) {
 
         if (moveSteps.length / 2 === steps) {
           if (
-            parseFloat(moveSteps[0].top) <
+            parseFloat(moveSteps[0].top) <=
             parseFloat(moveSteps[moveSteps.length - 1].top)
           )
             member.anchor.classList.remove('back');
           else member.anchor.classList.add('back');
 
           if (
-            parseFloat(moveSteps[0].left) <
+            parseFloat(moveSteps[0].left) <=
             parseFloat(moveSteps[moveSteps.length - 1].left)
           ) {
             member.anchor.classList.remove('right');
@@ -441,7 +441,8 @@ function memberAutoPilot(nextStep = null) {
                 el.classList.remove('skirt-walk');
                 el.classList.remove('legs-walk');
               });
-            target.classList.remove('back');
+            if (target.classList.contains('autopilotDisabled') === false)
+              target.classList.remove('back');
             consideredTile.style.outline = null;
             if (member.credits !== 0) member.credits--;
           };
