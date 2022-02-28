@@ -220,7 +220,7 @@ body {
 }
 
 .anchor.hold {
-  opacity: 0.2 !important;
+  /* opacity: 0.2 !important; */
 }
 .back .maggie_skirt {
   position: absolute;
@@ -524,16 +524,16 @@ body {
 }
 @keyframes legswalk {
   25% {
-    transform: skewY(-5deg)
+    transform: skewY(-5deg);
   }
   50% {
-    transform: skewY(0)
+    transform: skewY(0);
   }
   75% {
-    transform: skewY(5deg)
+    transform: skewY(5deg);
   }
   100% {
-    transform: skewY(0)
+    transform: skewY(0);
   }
 }
 
@@ -548,7 +548,7 @@ body {
   animation-duration: 1s;
   animation-timing-function: ease-in-out;
 }
-.skirt-walk, 
+.skirt-walk,
 .legs-walk {
   animation-iteration-count: infinite;
   animation-duration: 2s;
@@ -586,7 +586,6 @@ body {
   border-right: 15px solid transparent;
   border-top: 105px solid rgb(26, 21, 21);
   animation-name: legswalk;
-
 }
 
 .shoes {

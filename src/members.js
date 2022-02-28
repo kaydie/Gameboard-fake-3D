@@ -57,7 +57,11 @@ function addMemberElement(name) {
 
   if (['head', 'maggie_head'].includes(name)) {
     element.addEventListener('click', (e) => {
+      console.log('a?', e.target.closest('anchor'));
+      const clickedMember =
+        game.onStageQueue[e.target.closest('.anchor').dataset.queueId];
       e.currentTarget.classList.add('shake');
+      memberManualControlSetup(clickedMember, game.steps.max);
     });
     element.addEventListener('animationend', (e) => {
       e.currentTarget.classList.remove('shake');
@@ -82,7 +86,6 @@ function placeMemberOnBoard(layer, member, startTile, steps) {
   const hoverSound = function () {
     this.classList.add('autopilotDisabled');
     const clickedMember = game.onStageQueue[this.dataset.queueId];
-    memberManualControlSetup(clickedMember, game.steps.max);
     this.removeEventListener('mouseenter', hoverSound, true);
     Audio.playAudio(Audio.hover);
     this.addEventListener('mouseleave', leaveSound);
@@ -105,6 +108,7 @@ function placeMemberOnBoard(layer, member, startTile, steps) {
       Audio.playAudio(Audio.bump);
       e.currentTarget.classList.toggle('hold');
       const clickedMember = game.onStageQueue[e.currentTarget.dataset.queueId];
+      console.log(clickedMember);
       if (e.currentTarget.classList.contains('hold') === false)
         memberManualControlSetup(clickedMember);
 
@@ -200,9 +204,15 @@ function memberAutoPilot(nextStep = null) {
     const autopilotDisabled =
       member.anchor.classList.contains('autopilotDisabled');
 
-    if (autopilotDisabled) {
+    const hold = member.anchor.classList.contains('hold');
+
+    if (hold) {
       member.speechBubble.style.visibility = 'visible';
       member.speechBubble.innerHTML = `<p>Not going anywere soon...<p>`;
+    }
+    if (autopilotDisabled) {
+      member.speechBubble.style.visibility = 'visible';
+      member.speechBubble.innerHTML = `<p>You're in my head now...<p>`;
 
       if (member.doSteps.length === 0) continue;
 
