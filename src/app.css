@@ -69,7 +69,19 @@ body {
   justify-self: center;
   display: grid;
 }
-
+#member-containter {
+  position: absolute;
+  bottom:0;
+  left: 0;
+  width: 100vw;
+  display:  grid;
+  grid-template-columns: 50px auto auto;
+  gap: 5px;
+}
+.cell {
+  border: 1px solid black;
+  aspect-ratio: 1;
+}
 #board {
   position: relative;
   align-self: center;
