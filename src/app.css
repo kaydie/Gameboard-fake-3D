@@ -395,14 +395,14 @@ body {
   opacity: 0;
 }
 .tree_waist {
-  background: url(./images/Tree.png);
+  background: url(./images/tree01.png);
   background-size: contain;
   background-repeat: no-repeat;
-  width: 400px;
+  width: 800px;
   height: 800px;
   position: absolute;
-  top: -780px;
-  left: -360px;
+  top: -800px;
+  left: -370px;
   z-index: 1000;
 }
 .waist {
