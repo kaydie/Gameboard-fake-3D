@@ -240,6 +240,42 @@ Object.assign(game.members, {
       'down + right',
     ],
   },
+  tree: {
+    bio: {
+      name: 'Tree',
+      born: null,
+      from: 'Mother Earth',
+      occupation: 'Biologist',
+      about: 'Just a tree.',
+    },
+    quotes: [`Hey, I'm Just a Tree`],
+    anatomy: {
+      speechBubble: {
+        children: [],
+      },
+      startNumber: {},
+
+      tree_waist: {
+        children: ['startNumber'],
+      },
+      pinlight: {},
+      dropShadow: {},
+
+      anchor: {
+        children: ['tree_waist', 'pinlight', 'dropShadow'],
+      },
+    },
+    location: {
+      layer: null,
+      tile: {
+        row: 1,
+        col: 1,
+      },
+      transform: '',
+      currentTile: null,
+    },
+    keyBindings: ['up', 'down', 'left', 'right'],
+  },
 });
 
 Object.assign(game.board, {

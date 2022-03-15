@@ -333,6 +333,7 @@ function memberAutoPilot(nextStep = null) {
         member.speechBubble.innerHTML = `<p>Not going anywere...<p>`;
         continue;
       } else {
+        console.log(member);
         if (member.speechBubble.innerHTML.length > 0) {
           if (member.speechBubble.innerHTML === `<p>The spot is taken...<p>`) {
             member.speechBubble.style.visibility = 'hidden';
