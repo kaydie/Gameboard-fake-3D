@@ -273,7 +273,7 @@ Object.assign(game.members, {
       transform: '',
       currentTile: null,
     },
-    keyBindings: ['up', 'down', 'left', 'right'],
+    keyBindings: [],
   },
 });
 
