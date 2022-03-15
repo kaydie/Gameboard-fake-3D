@@ -261,7 +261,7 @@ Object.assign(game.members, {
       dropShadow: {},
 
       anchor: {
-        children: ['tree_waist', 'dropShadow'],
+        children: ['tree_waist', 'pinlight', 'dropShadow'],
       },
     },
     location: {
